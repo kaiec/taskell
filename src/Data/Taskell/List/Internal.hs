@@ -56,6 +56,9 @@ duplicate idx list = do
 append :: T.Task -> Update
 append task = tasks %~ (|> task)
 
+prepend :: T.Task -> Update
+prepend task = tasks %~ S.insertAt 0 task
+
 extract :: Int -> List -> Maybe (List, T.Task)
 extract idx list = do
     (xs, x) <- S.extract idx (list ^. tasks)

@@ -9,7 +9,7 @@ import ClassyPrelude
 import Control.Lens  ((^.))
 import Data.Sequence as S (adjust', deleteAt, update, (!?), (|>))
 
-import qualified Data.Taskell.List as L (List, Update, append, clearDue, count, due, empty, extract,
+import qualified Data.Taskell.List as L (List, Update, append, prepend, clearDue, count, due, empty, extract,
                                          searchFor)
 import qualified Data.Taskell.Seq  as S
 import qualified Data.Taskell.Task as T (Task, due)
@@ -47,7 +47,7 @@ changeList :: Pointer -> Lists -> Int -> Maybe Lists
 changeList (ListIndex list, TaskIndex idx) tasks dir = do
     let next = list + dir
     (from, task) <- L.extract idx =<< tasks !? list -- extract current task
-    to <- L.append task <$> tasks !? next -- get next list and append task
+    to <- L.prepend task <$> tasks !? next -- get next list and append task
     pure . updateLists next to $ updateLists list from tasks -- update lists
 
 newList :: Text -> Update

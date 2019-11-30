@@ -24,6 +24,7 @@ module Events.State
     , above
     , below
     , bottom
+    , top
     , previous
     , duplicate
     , next
@@ -201,8 +202,14 @@ clearDate state = pure $ state & lists .~ Lists.clearDue (state ^. current) (sta
 bottom :: Stateful
 bottom = pure . selectLast
 
+top :: Stateful
+top = pure . selectFirst
+
 selectLast :: InternalStateful
 selectLast state = setIndex state (countCurrent state - 1)
+
+selectFirst :: InternalStateful
+selectFirst state = setIndex state 0
 
 removeBlank :: Stateful
 removeBlank state = do

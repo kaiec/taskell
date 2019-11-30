@@ -14,6 +14,7 @@ module Data.Taskell.List
     , newAt
     , duplicate
     , append
+    , prepend
     , extract
     , updateFn
     , update

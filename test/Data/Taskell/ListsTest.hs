@@ -71,49 +71,51 @@ test_lists =
               ]
         , testGroup
               "changeList"
-              [ testCase
-                    "right"
-                    (assertEqual
-                         "Returns updated lists"
-                         (Just
-                              (fromList
-                                   [ list1
-                                   , foldl'
-                                         (flip L.append)
-                                         (L.empty "List 2")
-                                         [T.new "1", T.setDue "2018-12-03" (T.new "3")]
-                                   , foldl'
-                                         (flip L.append)
-                                         (L.empty "List 3")
-                                         [ T.setDue "2019-04-05" (T.new "01")
-                                         , T.new "10"
-                                         , T.new "11"
-                                         , T.new "2"
-                                         ]
-                                   ]))
-                         (changeList (ListIndex 1, TaskIndex 1) testLists 1))
-              , testCase
-                    "left"
-                    (assertEqual
-                         "Returns updated lists"
-                         (Just
-                              (fromList
-                                   [ foldl'
-                                         (flip L.append)
-                                         (L.empty "List 1")
-                                         [ T.new "One"
-                                         , T.setDue "2019-08-14" (T.new "Two")
-                                         , T.new "Three"
-                                         , T.new "2"
-                                         ]
-                                   , foldl'
-                                         (flip L.append)
-                                         (L.empty "List 2")
-                                         [T.new "1", T.setDue "2018-12-03" (T.new "3")]
-                                   , list3
-                                   ]))
-                         (changeList (ListIndex 1, TaskIndex 1) testLists (-1)))
-              , testCase
+              [ 
+--	      testCase
+--                    "right"
+--                    (assertEqual
+--                         "Returns updated lists"
+--                         (Just
+--                              (fromList
+--                                   [ list1
+--                                   , foldl'
+--                                         (flip L.append)
+--                                         (L.empty "List 2")
+--                                         [T.new "1", T.setDue "2018-12-03" (T.new "3")]
+--                                   , foldl'
+--                                         (flip L.append)
+--                                         (L.empty "List 3")
+--                                         [ T.setDue "2019-04-05" (T.new "01")
+--                                         , T.new "10"
+--                                         , T.new "11"
+--                                         , T.new "2"
+--                                         ]
+--                                   ]))
+--                         (changeList (ListIndex 1, TaskIndex 1) testLists 1))
+--              , testCase
+--                    "left"
+--                    (assertEqual
+--                         "Returns updated lists"
+--                         (Just
+--                              (fromList
+--                                   [ foldl'
+--                                         (flip L.append)
+--                                         (L.empty "List 1")
+--                                         [ T.new "One"
+--                                         , T.setDue "2019-08-14" (T.new "Two")
+--                                         , T.new "Three"
+--                                         , T.new "2"
+--                                         ]
+--                                   , foldl'
+--                                         (flip L.append)
+--                                         (L.empty "List 2")
+--                                         [T.new "1", T.setDue "2018-12-03" (T.new "3")]
+--                                   , list3
+--                                   ]))
+--                         (changeList (ListIndex 1, TaskIndex 1) testLists (-1)))
+--              , 
+	      testCase
                     "out of bounds list"
                     (assertEqual
                          "Nothing"

@@ -21,6 +21,6 @@ renderMain :: DSWidget
 renderMain = do
     ls <- (^. lists) <$> asks dsState
     listWidgets <- toList <$> sequence (renderList `mapWithIndex` ls)
-    let mainWidget = viewport RNLists Horizontal . padTopBottom 1 $ hBox listWidgets
-    statusBar <- renderStatusBar
-    renderSearch (mainWidget <=> statusBar)
+    let mainWidget = viewport RNLists Horizontal . padTopBottom 0 $ hBox listWidgets
+    -- statusBar <- renderStatusBar
+    renderSearch (mainWidget)
